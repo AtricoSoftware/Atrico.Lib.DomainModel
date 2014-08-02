@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Rob Rimmer</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/AtricoSoftware/Atrico.Lib.DomainModel.git</projectUrl>
+    <iconUrl>https://avatars0.githubusercontent.com/u/6891048</iconUrl>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <releaseNotes>
+1.0.0.0:
+  Initial release
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="bin\Release\$id$.*" target="lib\net45" />
+    <file src="..\*.40\bin\Release\$id$.*" target="lib\net40" />
+    <file src="..\..\License.txt" target="docs" />
+  </files>
+</package>
