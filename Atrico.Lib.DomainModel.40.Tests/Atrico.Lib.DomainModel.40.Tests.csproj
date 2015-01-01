@@ -61,12 +61,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atrico.Lib.DomainModel.40\Atrico.Lib.DomainModel.40.csproj">
-      <Project>{632a0548-66d4-4def-9c23-89972264f4d8}</Project>
-      <Name>Atrico.Lib.DomainModel.40</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

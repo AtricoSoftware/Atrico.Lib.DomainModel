@@ -13,6 +13,8 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
+1.1.0.0:
+  Upgrade to nunit 2.6.4
 1.0.0.0:
   Initial release
     </releaseNotes>

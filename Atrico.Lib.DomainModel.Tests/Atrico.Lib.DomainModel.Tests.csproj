@@ -34,17 +34,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atrico.Lib.Assertions, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Atrico.Lib.Assertions.1.0.0.2\lib\net45\Atrico.Lib.Assertions.dll</HintPath>
+    <Reference Include="Atrico.Lib.Assertions">
+      <HintPath>..\packages\Atrico.Lib.Assertions.2.0.0.0\lib\net45\Atrico.Lib.Assertions.dll</HintPath>
     </Reference>
     <Reference Include="Atrico.Lib.Testing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Atrico.Lib.Testing.1.0.0.0\lib\net45\Atrico.Lib.Testing.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +59,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

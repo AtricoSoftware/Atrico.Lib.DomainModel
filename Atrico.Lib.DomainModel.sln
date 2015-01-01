@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel", "Atrico.Lib.DomainModel\Atrico.Lib.DomainModel.csproj", "{5D118A7A-C9DB-4D87-8315-71D7F0353B39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel.Tests", "Atrico.Lib.DomainModel.Tests\Atrico.Lib.DomainModel.Tests.csproj", "{FDD10FF0-2D97-4CA0-BF7F-58483D701534}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel.40", "Atrico.Lib.DomainModel.40\Atrico.Lib.DomainModel.40.csproj", "{632A0548-66D4-4DEF-9C23-89972264F4D8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel.40.Tests", "Atrico.Lib.DomainModel.40.Tests\Atrico.Lib.DomainModel.40.Tests.csproj", "{1FD03B1E-9AF6-41D0-A09F-0E796A0B0CDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +21,6 @@ Global
 		{FDD10FF0-2D97-4CA0-BF7F-58483D701534}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDD10FF0-2D97-4CA0-BF7F-58483D701534}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDD10FF0-2D97-4CA0-BF7F-58483D701534}.Release|Any CPU.Build.0 = Release|Any CPU
-		{632A0548-66D4-4DEF-9C23-89972264F4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{632A0548-66D4-4DEF-9C23-89972264F4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{632A0548-66D4-4DEF-9C23-89972264F4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{632A0548-66D4-4DEF-9C23-89972264F4D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1FD03B1E-9AF6-41D0-A09F-0E796A0B0CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FD03B1E-9AF6-41D0-A09F-0E796A0B0CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FD03B1E-9AF6-41D0-A09F-0E796A0B0CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FD03B1E-9AF6-41D0-A09F-0E796A0B0CDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
