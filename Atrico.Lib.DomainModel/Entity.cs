@@ -6,26 +6,18 @@ namespace Atrico.Lib.DomainModel
 	///     This is a trivial class that is used to make sure that Equals and GetHashCode
 	///     are properly overloaded with the correct semantics.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <typeparam name="TKey"></typeparam>
-	public abstract class Entity<T, TKey> where T : Entity<T, TKey>, IEquatable<T>
+	/// <typeparam name="T">Type of object</typeparam>
+	/// <typeparam name="TKey">Type of unique key/identifier</typeparam>
+	public abstract class Entity<T, TKey> where T : Entity<T, TKey>, IEquatable<T> where TKey : ValueObject<TKey>
 	{
-		private readonly TKey _id;
+		protected TKey EntityKey { get; private set; }
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		protected Entity()
-			: this(default(TKey))
+		protected Entity(TKey entityKey)
 		{
-		}
-
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		protected Entity(TKey id)
-		{
-			_id = id;
+			EntityKey = entityKey;
 		}
 
 		public bool Equals(T other)
@@ -37,23 +29,32 @@ namespace Atrico.Lib.DomainModel
 		{
 			var other = obj as T;
 
-			if (other == null) return false;
+			if (other == null)
+			{
+				return false;
+			}
 
-			//to handle the case of comparing two new objects
+			// To handle the case of comparing two new objects
+			var otherIsTransient = ReferenceEquals(other.EntityKey, null);
+			var thisIsTransient = ReferenceEquals(EntityKey, null);
 
-			var otherIsTransient = Equals(other._id, default(TKey));
-			var thisIsTransient = Equals(_id, default(TKey));
+			if (otherIsTransient && thisIsTransient)
+			{
+				return ReferenceEquals(other, this);
+			}
+			if (otherIsTransient || thisIsTransient)
+			{
+				return false;
+			}
 
-			if (otherIsTransient && thisIsTransient) return ReferenceEquals(other, this);
-
-			return other._id.Equals(_id);
+			return other.EntityKey.Equals(EntityKey);
 		}
 
 		public override int GetHashCode()
 		{
-			var thisIsTransient = Equals(_id, default(TKey));
+			var thisIsTransient = Equals(EntityKey, null);
 
-			return !thisIsTransient ? _id.GetHashCode() : default(TKey).GetHashCode();
+			return !thisIsTransient ? EntityKey.GetHashCode() : 0;
 		}
 
 		public static bool operator ==(Entity<T, TKey> x, Entity<T, TKey> y)
@@ -64,21 +65,6 @@ namespace Atrico.Lib.DomainModel
 		public static bool operator !=(Entity<T, TKey> x, Entity<T, TKey> y)
 		{
 			return !(x == y);
-		}
-	}
-
-	/// <summary>
-	/// Entity type with guid for entity id
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public abstract class Entity<T> : Entity<T, Guid> where T : Entity<T, Guid>, IEquatable<T>
-	{
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		protected Entity()
-			: base(Guid.NewGuid())
-		{
 		}
 	}
 }

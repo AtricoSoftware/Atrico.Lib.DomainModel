@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -24,7 +23,9 @@ namespace Atrico.Lib.DomainModel
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
+			{
 				return false;
+			}
 
 			var other = obj as T;
 
@@ -38,12 +39,18 @@ namespace Atrico.Lib.DomainModel
 
 		public virtual bool Equals(T other)
 		{
-			if (ReferenceEquals(other, null)) return false;
+			if (ReferenceEquals(other, null))
+			{
+				return false;
+			}
 
 			var t = GetType();
 			var otherType = other.GetType();
 
-			if (t != otherType) return false;
+			if (t != otherType)
+			{
+				return false;
+			}
 
 			return !_values.Value.Where((t1, idx) => !t1.Equals(other._values.Value[idx])).Any();
 		}
@@ -64,7 +71,8 @@ namespace Atrico.Lib.DomainModel
 
 			var fields = new List<FieldInfo>();
 
-			while (t.BaseType != typeof(object))
+			// ReSharper disable once PossibleNullReferenceException (In first instance, t is derived from ValueType)
+			while (t.BaseType != typeof (object))
 			{
 				fields.AddRange(t.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public));
 
@@ -79,7 +87,7 @@ namespace Atrico.Lib.DomainModel
 			const int startValue = 17;
 			const int multiplier = 59;
 
-			return _values.Value.Aggregate(startValue, (current, value) => current*multiplier+value.GetHashCode());
+			return _values.Value.Aggregate(startValue, (current, value) => current * multiplier + value.GetHashCode());
 		}
 
 		private class Null

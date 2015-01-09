@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<package >
+
+<package>
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
@@ -13,10 +14,13 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
-1.1.0.0:
-  Upgrade to nunit 2.6.4
-1.0.0.0:
-  Initial release
+      Tidied up equals
+      Constrained Key to be ValueType
+      Removed default ctor - now requires explicit key
+      1.1.0.0:
+      Upgrade to nunit 2.6.4
+      1.0.0.0:
+      Initial release
     </releaseNotes>
   </metadata>
   <files>

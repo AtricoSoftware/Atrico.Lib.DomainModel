@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\Annotations.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />
     <Compile Include="TestValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

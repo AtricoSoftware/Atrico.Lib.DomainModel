@@ -1,4 +1,5 @@
 ﻿using Atrico.Lib.Assertions;
+using Atrico.Lib.DomainModel.Tests.Annotations;
 using Atrico.Lib.Testing;
 using Atrico.Lib.Testing.NUnitAttributes;
 
@@ -9,9 +10,9 @@ namespace Atrico.Lib.DomainModel.Tests
 	{
 		private class Address : ValueObject<Address>
 		{
-			private readonly string _address1;
-			private readonly string _city;
-			private readonly string _state;
+			[UsedImplicitly] private readonly string _address1;
+			[UsedImplicitly] private readonly string _city;
+			[UsedImplicitly] private readonly string _state;
 
 			public Address(string address1, string city, string state)
 			{
@@ -19,36 +20,16 @@ namespace Atrico.Lib.DomainModel.Tests
 				_city = city;
 				_state = state;
 			}
-
-			public string Address1
-			{
-				get { return _address1; }
-			}
-
-			public string City
-			{
-				get { return _city; }
-			}
-
-			public string State
-			{
-				get { return _state; }
-			}
 		}
 
 		private class ExpandedAddress : Address
 		{
-			private readonly string _address2;
+			[UsedImplicitly] private readonly string _address2;
 
 			public ExpandedAddress(string address1, string address2, string city, string state)
 				: base(address1, city, state)
 			{
 				_address2 = address2;
-			}
-
-			public string Address2
-			{
-				get { return _address2; }
 			}
 		}
 
@@ -128,6 +109,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			Assert.That(address == address2, Is.True);
 			Assert.That(address2 != address3, Is.True);
 		}
+
 		[Test]
 		public void AddressOperatorsWorkWithNulls()
 		{
@@ -140,10 +122,20 @@ namespace Atrico.Lib.DomainModel.Tests
 		}
 
 		[Test]
-		public void DerivedTypesBehaveCorrectly()
+		public void DerivedTypesDoNotEqualBaseTypes()
 		{
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
+
+			Assert.That(address.Equals(address2), Is.False);
+			Assert.That(address == address2, Is.False);
+		}
+
+		[Test]
+		public void DerivedTypesEqualUsingBaseFields()
+		{
+			var address = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
+			var address2 = new ExpandedAddress("Address2", "Apt 123", "Austin", "TX");
 
 			Assert.That(address.Equals(address2), Is.False);
 			Assert.That(address == address2, Is.False);
