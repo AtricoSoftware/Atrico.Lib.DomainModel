@@ -41,9 +41,9 @@
     <Reference Include="Atrico.Lib.Common">
       <HintPath>..\packages\Atrico.Lib.Common.1.1.0.0\lib\net45\Atrico.Lib.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Atrico.Lib.Testing, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Atrico.Lib.Testing, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Atrico.Lib.Testing.1.1.0.0\lib\net45\Atrico.Lib.Testing.dll</HintPath>
+      <HintPath>..\packages\Atrico.Lib.Testing.1.2.0.0\lib\net45\Atrico.Lib.Testing.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
