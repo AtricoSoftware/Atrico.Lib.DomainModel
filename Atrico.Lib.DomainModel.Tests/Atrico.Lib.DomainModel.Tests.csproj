@@ -38,8 +38,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Atrico.Lib.Assertions.2.1.0.0\lib\net45\Atrico.Lib.Assertions.dll</HintPath>
     </Reference>
-    <Reference Include="Atrico.Lib.Common">
-      <HintPath>..\packages\Atrico.Lib.Common.1.1.0.0\lib\net45\Atrico.Lib.Common.dll</HintPath>
+    <Reference Include="Atrico.Lib.Common, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Atrico.Lib.Common.1.2.0.0\lib\net45\Atrico.Lib.Common.dll</HintPath>
     </Reference>
     <Reference Include="Atrico.Lib.Testing, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
