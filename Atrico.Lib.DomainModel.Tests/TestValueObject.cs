@@ -1,4 +1,6 @@
 ﻿using Atrico.Lib.Assertions;
+using Atrico.Lib.Assertions.Constraints;
+using Atrico.Lib.Assertions.Elements;
 using Atrico.Lib.DomainModel.Tests.Annotations;
 using Atrico.Lib.Testing;
 using Atrico.Lib.Testing.NUnitAttributes;
@@ -39,7 +41,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new Address("Address1", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.True);
+			Assert.That(Value.Of(address.Equals(address2)).Is().True());
 		}
 
 		[Test]
@@ -48,7 +50,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new Address("Address2", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.False);
+			Assert.That(Value.Of(address.Equals(address2)).Is().False());
 		}
 
 		[Test]
@@ -57,7 +59,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address(null, "Austin", "TX");
 			var address2 = new Address("Address2", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.False);
+			Assert.That(Value.Of(address.Equals(address2)).Is().False());
 		}
 
 		[Test]
@@ -66,7 +68,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address2", "Austin", "TX");
 			var address2 = new Address("Address2", null, "TX");
 
-			Assert.That(address.Equals(address2), Is.False);
+			Assert.That(Value.Of(address.Equals(address2)).Is().False());
 		}
 
 		[Test]
@@ -74,7 +76,7 @@ namespace Atrico.Lib.DomainModel.Tests
 		{
 			var address = new Address("Address1", "Austin", "TX");
 
-			Assert.That(address.Equals(address), Is.True);
+			Assert.That(Value.Of(address.Equals(address)).Is().True());
 		}
 
 		[Test]
@@ -83,8 +85,8 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new Address("Address2", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.False);
-			Assert.That(address2.Equals(address), Is.False);
+			Assert.That(Value.Of(address.Equals(address2)).Is().False());
+            Assert.That(Value.Of(address2.Equals(address)).Is().False());
 		}
 
 		[Test]
@@ -94,9 +96,9 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address2 = new Address("Address1", "Austin", "TX");
 			var address3 = new Address("Address1", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.True);
-			Assert.That(address2.Equals(address3), Is.True);
-			Assert.That(address.Equals(address3), Is.True);
+			Assert.That(Value.Of(address.Equals(address2)).Is().True());
+            Assert.That(Value.Of(address2.Equals(address3)).Is().True());
+			Assert.That(Value.Of(address.Equals(address3)).Is().True());
 		}
 
 		[Test]
@@ -106,8 +108,8 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address2 = new Address("Address1", "Austin", "TX");
 			var address3 = new Address("Address2", "Austin", "TX");
 
-			Assert.That(address == address2, Is.True);
-			Assert.That(address2 != address3, Is.True);
+			Assert.That(Value.Of(address == address2).Is().True());
+            Assert.That(Value.Of(address2 != address3).Is().True());
 		}
 
 		[Test]
@@ -117,8 +119,8 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address2 = new Address("Address1", null, "TX");
 			var address3 = new Address("Address2", null, "TX");
 
-			Assert.That(address == address2, Is.True);
-			Assert.That(address2 != address3, Is.True);
+			Assert.That(Value.Of(address == address2).Is().True());
+            Assert.That(Value.Of(address2 != address3).Is().True());
 		}
 
 		[Test]
@@ -127,8 +129,8 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.False);
-			Assert.That(address == address2, Is.False);
+			Assert.That(Value.Of(address.Equals(address2)).Is().False());
+			Assert.That(Value.Of(address == address2).Is().False());
 		}
 
 		[Test]
@@ -137,8 +139,8 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
 			var address2 = new ExpandedAddress("Address2", "Apt 123", "Austin", "TX");
 
-			Assert.That(address.Equals(address2), Is.False);
-			Assert.That(address == address2, Is.False);
+			Assert.That(Value.Of(address.Equals(address2)).Is().False());
+			Assert.That(Value.Of(address == address2).Is().False());
 		}
 
 		[Test]
@@ -147,7 +149,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new Address("Address1", "Austin", "TX");
 
-			Assert.That(address2.GetHashCode(), Is.EqualTo(address.GetHashCode()));
+            Assert.That(Value.Of(address2.GetHashCode()).Is().EqualTo(address.GetHashCode()));
 		}
 
 		[Test]
@@ -156,7 +158,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address(null, "Austin", "TX");
 			var address2 = new Address("TX", "Austin", null);
 
-			Assert.That(address2.GetHashCode(), Is.Not.EqualTo(address.GetHashCode()));
+            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
 		}
 
 		[Test]
@@ -165,7 +167,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new Address("Address2", "Austin", "TX");
 
-			Assert.That(address2.GetHashCode(), Is.Not.EqualTo(address.GetHashCode()));
+            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
 		}
 
 		[Test]
@@ -174,7 +176,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new Address("_city", null, null);
 			var address2 = new Address(null, "_address1", null);
 
-			Assert.That(address2.GetHashCode(), Is.Not.EqualTo(address.GetHashCode()));
+            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
 		}
 
 		[Test]
@@ -183,7 +185,7 @@ namespace Atrico.Lib.DomainModel.Tests
 			var address = new ExpandedAddress("Address99999", "Apt 123", "New Orleans", "LA");
 			var address2 = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
 
-			Assert.That(address2.GetHashCode(), Is.Not.EqualTo(address.GetHashCode()));
+            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
 		}
 	}
 }
