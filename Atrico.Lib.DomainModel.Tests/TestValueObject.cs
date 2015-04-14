@@ -22,6 +22,20 @@ namespace Atrico.Lib.DomainModel.Tests
 				_city = city;
 				_state = state;
 			}
+
+		    protected override int GetHashCodeImpl()
+		    {
+		        return _address1.GetHashCode() ^
+                       _city.GetHashCode() ^
+                       _state.GetHashCode();
+		    }
+
+		    protected override bool EqualsImpl(Address other)
+		    {
+		        return _address1.Equals(other._address1) &&
+                        _city.Equals(other._city) &&
+                        _state.Equals(other._state);
+		    }
 		}
 
 		private class ExpandedAddress : Address
@@ -49,24 +63,6 @@ namespace Atrico.Lib.DomainModel.Tests
 		{
 			var address = new Address("Address1", "Austin", "TX");
 			var address2 = new Address("Address2", "Austin", "TX");
-
-			Assert.That(Value.Of(address.Equals(address2)).Is().False());
-		}
-
-		[Test]
-		public void AddressEqualsWorksWithNulls()
-		{
-			var address = new Address(null, "Austin", "TX");
-			var address2 = new Address("Address2", "Austin", "TX");
-
-			Assert.That(Value.Of(address.Equals(address2)).Is().False());
-		}
-
-		[Test]
-		public void AddressEqualsWorksWithNullsOnOtherObject()
-		{
-			var address = new Address("Address2", "Austin", "TX");
-			var address2 = new Address("Address2", null, "TX");
 
 			Assert.That(Value.Of(address.Equals(address2)).Is().False());
 		}
@@ -112,16 +108,6 @@ namespace Atrico.Lib.DomainModel.Tests
             Assert.That(Value.Of(address2 != address3).Is().True());
 		}
 
-		[Test]
-		public void AddressOperatorsWorkWithNulls()
-		{
-			var address = new Address("Address1", null, "TX");
-			var address2 = new Address("Address1", null, "TX");
-			var address3 = new Address("Address2", null, "TX");
-
-			Assert.That(Value.Of(address == address2).Is().True());
-            Assert.That(Value.Of(address2 != address3).Is().True());
-		}
 
 		[Test]
 		public void DerivedTypesDoNotEqualBaseTypes()
@@ -153,15 +139,6 @@ namespace Atrico.Lib.DomainModel.Tests
 		}
 
 		[Test]
-		public void TransposedValuesGiveDifferentHashCodes()
-		{
-			var address = new Address(null, "Austin", "TX");
-			var address2 = new Address("TX", "Austin", null);
-
-            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
-		}
-
-		[Test]
 		public void UnequalValueObjectsHaveDifferentHashCodes()
 		{
 			var address = new Address("Address1", "Austin", "TX");
@@ -173,8 +150,8 @@ namespace Atrico.Lib.DomainModel.Tests
 		[Test]
 		public void TransposedValuesOfFieldNamesGivesDifferentHashCodes()
 		{
-			var address = new Address("_city", null, null);
-			var address2 = new Address(null, "_address1", null);
+			var address = new Address("_city", "", "");
+			var address2 = new Address("", "_address1", "");
 
             Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
 		}

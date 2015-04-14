@@ -14,6 +14,8 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
+      2.0.0.0
+      ValueObject optimized for performance
       1.2.0.0
       Upgrade to .net 4.5.2
       Tidied up equals
