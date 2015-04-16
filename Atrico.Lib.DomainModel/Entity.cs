@@ -33,6 +33,7 @@ namespace Atrico.Lib.DomainModel
 			{
 				return false;
 			}
+            if (!(GetType() == other.GetType())) return false;
 
 			// To handle the case of comparing two new objects
 			var otherIsTransient = ReferenceEquals(other.EntityKey, null);
@@ -55,16 +56,6 @@ namespace Atrico.Lib.DomainModel
 			var thisIsTransient = Equals(EntityKey, null);
 
 			return !thisIsTransient ? EntityKey.GetHashCode() : 0;
-		}
-
-		public static bool operator ==(Entity<T, TKey> x, Entity<T, TKey> y)
-		{
-			return Equals(x, y);
-		}
-
-		public static bool operator !=(Entity<T, TKey> x, Entity<T, TKey> y)
-		{
-			return !(x == y);
 		}
 	}
 }
