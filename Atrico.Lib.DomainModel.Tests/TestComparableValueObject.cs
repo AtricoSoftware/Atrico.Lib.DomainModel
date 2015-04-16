@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Atrico.Lib.Assertions;
 using Atrico.Lib.Assertions.Constraints;
 using Atrico.Lib.Assertions.Elements;
@@ -33,11 +34,16 @@ namespace Atrico.Lib.DomainModel.Tests
             {
                 return _value.CompareTo(other._value);
             }
+
+            public override string ToString()
+            {
+                return string.Format("{0}({1})", GetType().Name, _value);
+            }
         }
 
-        #region Compare values
-
         private const int _pivot = 10;
+
+        #region Compare values
 
         [Test]
         public void TestCompare([Values(1, 10, 100)] int val)
@@ -140,7 +146,7 @@ namespace Atrico.Lib.DomainModel.Tests
         }
 
         [Test]
-        public void TestLessThanWithRhsNull()
+        public void TestLessThanWithNull()
         {
             // Arrange
             var val = RandomValues.Integer();
@@ -156,7 +162,7 @@ namespace Atrico.Lib.DomainModel.Tests
         }
 
         [Test]
-        public void TestGreaterThanWithRhsNull()
+        public void TestGreaterThanWithNull()
         {
             // Arrange
             var val = RandomValues.Integer();
@@ -172,7 +178,7 @@ namespace Atrico.Lib.DomainModel.Tests
         }
 
         [Test]
-        public void TestLessThanEqualWithRhsNull()
+        public void TestLessThanEqualWithNull()
         {
             // Arrange
             var val = RandomValues.Integer();
@@ -188,7 +194,7 @@ namespace Atrico.Lib.DomainModel.Tests
         }
 
         [Test]
-        public void TestGreaterThanEqualWithRhsNull()
+        public void TestGreaterThanEqualWithNull()
         {
             // Arrange
             var val = RandomValues.Integer();
@@ -198,6 +204,98 @@ namespace Atrico.Lib.DomainModel.Tests
 
             // Act
             var result = obj1 >= null;
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        #endregion
+
+        #region Compare with derived type
+
+        private class TestObjectDerived : TestObject
+        {
+            public TestObjectDerived(int value)
+                : base(value)
+            {
+            }
+        }
+
+        [Test]
+        public void TestCompareWithOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            var expected = String.Compare(obj1.GetType().FullName, obj2.GetType().FullName, StringComparison.Ordinal);
+            Debug.WriteLine("{0} compareto {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1.CompareTo(obj2);
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        [Test]
+        public void TestLessThanOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            var expected = String.Compare(obj1.GetType().FullName, obj2.GetType().FullName, StringComparison.Ordinal) < 0;
+            Debug.WriteLine("{0} < {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1 < obj2;
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        [Test]
+        public void TestGreaterThanOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            var expected = String.Compare(obj1.GetType().FullName, obj2.GetType().FullName, StringComparison.Ordinal) > 0;
+            Debug.WriteLine("{0} > {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1 > obj2;
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        [Test]
+        public void TestLessThanEqualOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            var expected = String.Compare(obj1.GetType().FullName, obj2.GetType().FullName, StringComparison.Ordinal) <= 0;
+            Debug.WriteLine("{0} <= {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1 <= obj2;
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        [Test]
+        public void TestGreaterThanEqualOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            var expected = String.Compare(obj1.GetType().FullName, obj2.GetType().FullName, StringComparison.Ordinal) >= 0;
+            Debug.WriteLine("{0} >= {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1 >= obj2;
 
             // Assert
             Assert.That(Value.Of(result).Is().EqualTo(expected));

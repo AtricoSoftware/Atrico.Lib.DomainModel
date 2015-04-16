@@ -2,13 +2,13 @@
 
 namespace Atrico.Lib.DomainModel
 {
-	/// <summary>
-	///     This is a trivial class that is used to make sure that Equals and GetHashCode
-	///     are properly overloaded with the correct semantics.
-	/// </summary>
-	/// <typeparam name="T">Type of object</typeparam>
-	/// <typeparam name="TKey">Type of unique key/identifier</typeparam>
-	public abstract class Entity<T, TKey> where T : Entity<T, TKey>, IEquatable<T> where TKey : ValueObject<TKey>
+    /// <summary>
+    ///     This is a trivial class that is used to make sure that Equals and GetHashCode
+    ///     are properly overloaded with the correct semantics.
+    /// </summary>
+    /// <typeparam name="T">Type of object</typeparam>
+    /// <typeparam name="TKey">Type of unique key/identifier</typeparam>
+    public abstract class Entity<T, TKey>: IEquatable<T> where T : Entity<T, TKey> where TKey : ValueObject<TKey>
 	{
 		protected TKey EntityKey { get; private set; }
 

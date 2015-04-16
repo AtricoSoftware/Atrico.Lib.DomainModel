@@ -1,4 +1,5 @@
-﻿using Atrico.Lib.Assertions;
+﻿using System.Diagnostics;
+using Atrico.Lib.Assertions;
 using Atrico.Lib.Assertions.Constraints;
 using Atrico.Lib.Assertions.Elements;
 using Atrico.Lib.DomainModel.Tests.Annotations;
@@ -8,161 +9,197 @@ using Atrico.Lib.Testing.NUnitAttributes;
 namespace Atrico.Lib.DomainModel.Tests
 {
     [TestFixture]
-	public class TestValueObject : TestFixtureBase
-	{
-		private class Address : ValueObject<Address>
-		{
-			[UsedImplicitly] private readonly string _address1;
-			[UsedImplicitly] private readonly string _city;
-			[UsedImplicitly] private readonly string _state;
+    public class TestValueObject : TestFixtureBase
+    {
+        private class TestObject : ValueObject<TestObject>
+        {
+            private readonly int _value;
 
-			public Address(string address1, string city, string state)
-			{
-				_address1 = address1;
-				_city = city;
-				_state = state;
-			}
+            public TestObject(int value)
+            {
+                _value = value;
+            }
 
-		    protected override int GetHashCodeImpl()
-		    {
-		        return _address1.GetHashCode() ^
-                       _city.GetHashCode() ^
-                       _state.GetHashCode();
-		    }
+            protected override int GetHashCodeImpl()
+            {
+                return _value.GetHashCode();
+            }
 
-		    protected override bool EqualsImpl(Address other)
-		    {
-		        return _address1.Equals(other._address1) &&
-                        _city.Equals(other._city) &&
-                        _state.Equals(other._state);
-		    }
-		}
+            protected override bool EqualsImpl(TestObject other)
+            {
+                return _value.Equals(other._value);
+            }
 
-		private class ExpandedAddress : Address
-		{
-			[UsedImplicitly] private readonly string _address2;
+            public override string ToString()
+            {
+                return string.Format("{0}({1})", GetType().Name, _value);
+            }
+        }
 
-			public ExpandedAddress(string address1, string address2, string city, string state)
-				: base(address1, city, state)
-			{
-				_address2 = address2;
-			}
-		}
+        private const int _pivot = 10;
 
-		[Test]
-		public void AddressEqualsWorksWithIdenticalAddresses()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address1", "Austin", "TX");
+        #region Equals values
 
-			Assert.That(Value.Of(address.Equals(address2)).Is().True());
-		}
+        [Test]
+        public void TestEquals([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObject(val);
+            var expected = _pivot.Equals(val);
+            Debug.WriteLine("{0} equals {1} = {2}", _pivot, val, expected);
 
-		[Test]
-		public void AddressEqualsWorksWithNonIdenticalAddresses()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address2", "Austin", "TX");
+            // Act
+            var result = obj1.Equals(obj2);
 
-			Assert.That(Value.Of(address.Equals(address2)).Is().False());
-		}
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
 
-		[Test]
-		public void AddressEqualsIsReflexive()
-		{
-			var address = new Address("Address1", "Austin", "TX");
+        [Test]
+        public void TestOperatorEquals([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObject(val);
+            var expected = _pivot == val;
+            Debug.WriteLine("{0} == {1} = {2}", _pivot, val, expected);
 
-			Assert.That(Value.Of(address.Equals(address)).Is().True());
-		}
+            // Act
+            var result = obj1 == obj2;
 
-		[Test]
-		public void AddressEqualsIsSymmetric()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address2", "Austin", "TX");
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
 
-			Assert.That(Value.Of(address.Equals(address2)).Is().False());
-            Assert.That(Value.Of(address2.Equals(address)).Is().False());
-		}
+        [Test]
+        public void TestOperatorNotEquals([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObject(val);
+            var expected = _pivot != val;
+            Debug.WriteLine("{0} != {1} = {2}", _pivot, val, expected);
 
-		[Test]
-		public void AddressEqualsIsTransitive()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address1", "Austin", "TX");
-			var address3 = new Address("Address1", "Austin", "TX");
+            // Act
+            var result = obj1 != obj2;
 
-			Assert.That(Value.Of(address.Equals(address2)).Is().True());
-            Assert.That(Value.Of(address2.Equals(address3)).Is().True());
-			Assert.That(Value.Of(address.Equals(address3)).Is().True());
-		}
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
 
-		[Test]
-		public void AddressOperatorsWork()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address1", "Austin", "TX");
-			var address3 = new Address("Address2", "Austin", "TX");
+        #endregion
 
-			Assert.That(Value.Of(address == address2).Is().True());
-            Assert.That(Value.Of(address2 != address3).Is().True());
-		}
+        #region Equals with null
 
+        [Test]
+        public void TestEqualsWithNull()
+        {
+            // Arrange
+            var val = RandomValues.Integer();
+            var obj1 = new TestObject(val);
+            const bool expected = false; // Null never equals
+            Debug.WriteLine("{0} equals NULL = {1}", val, expected);
 
-		[Test]
-		public void DerivedTypesDoNotEqualBaseTypes()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
+            // Act
+            var result = obj1.Equals(null);
 
-			Assert.That(Value.Of(address.Equals(address2)).Is().False());
-			Assert.That(Value.Of(address == address2).Is().False());
-		}
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
 
-		[Test]
-		public void DerivedTypesEqualUsingBaseFields()
-		{
-			var address = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
-			var address2 = new ExpandedAddress("Address2", "Apt 123", "Austin", "TX");
+        [Test]
+        public void TestOperatorEqualsWithNull()
+        {
+            // Arrange
+            var val = RandomValues.Integer();
+            var obj1 = new TestObject(val);
+            const bool expected = false; // Null never equals
+            Debug.WriteLine("{0} == NULL = {1}", val, expected);
 
-			Assert.That(Value.Of(address.Equals(address2)).Is().False());
-			Assert.That(Value.Of(address == address2).Is().False());
-		}
+            // Act
+            var result = obj1 == null;
 
-		[Test]
-		public void EqualValueObjectsHaveSameHashCode()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address1", "Austin", "TX");
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
 
-            Assert.That(Value.Of(address2.GetHashCode()).Is().EqualTo(address.GetHashCode()));
-		}
+        [Test]
+        public void TestOperatorNotEqualsWithNull()
+        {
+            // Arrange
+            var val = RandomValues.Integer();
+            var obj1 = new TestObject(val);
+            const bool expected = true; // Null never equals
+            Debug.WriteLine("{0} != NULL = {1}", val, expected);
 
-		[Test]
-		public void UnequalValueObjectsHaveDifferentHashCodes()
-		{
-			var address = new Address("Address1", "Austin", "TX");
-			var address2 = new Address("Address2", "Austin", "TX");
+            // Act
+            var result = obj1 != null;
 
-            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
-		}
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
 
-		[Test]
-		public void TransposedValuesOfFieldNamesGivesDifferentHashCodes()
-		{
-			var address = new Address("_city", "", "");
-			var address2 = new Address("", "_address1", "");
+        #endregion
 
-            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
-		}
+        #region Equals with derived type
 
-		[Test]
-		public void DerivedTypesHashCodesBehaveCorrectly()
-		{
-			var address = new ExpandedAddress("Address99999", "Apt 123", "New Orleans", "LA");
-			var address2 = new ExpandedAddress("Address1", "Apt 123", "Austin", "TX");
+        private class TestObjectDerived : TestObject
+        {
+            public TestObjectDerived(int value)
+                : base(value)
+            {
+            }
+        }
 
-            Assert.That(Value.Of(address2.GetHashCode()).Is().Not().EqualTo(address.GetHashCode()));
-		}
-	}
+        [Test]
+        public void TestEqualsWithOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            const bool expected = false; // Different type never equals
+            Debug.WriteLine("{0} equals {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1.Equals(obj2);
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        [Test]
+        public void TestOperatorEqualsWithOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            const bool expected = false; // Different type never equals
+            Debug.WriteLine("{0} == {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1 == obj2;
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        [Test]
+        public void TestOperatorNotEqualsWithOtherType([Values(1, 10, 100)] int val)
+        {
+            // Arrange
+            var obj1 = new TestObject(_pivot);
+            var obj2 = new TestObjectDerived(val);
+            const bool expected = true; // Different type never equals
+            Debug.WriteLine("{0} != {1} = {2}", obj1, obj2, expected);
+
+            // Act
+            var result = obj1 != obj2;
+
+            // Assert
+            Assert.That(Value.Of(result).Is().EqualTo(expected));
+        }
+
+        #endregion
+    }
 }

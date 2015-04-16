@@ -38,6 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComparableEntity.cs" />
     <Compile Include="ComparableValueObject.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />
