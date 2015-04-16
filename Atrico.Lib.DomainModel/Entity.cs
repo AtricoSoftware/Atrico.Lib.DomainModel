@@ -20,42 +20,19 @@ namespace Atrico.Lib.DomainModel
             EntityKey = entityKey;
         }
 
-        public bool Equals(T other)
-        {
-            return Equals(other as object);
-        }
-
         public override bool Equals(object obj)
         {
-            var other = obj as T;
+            return Equals(obj as T);
+        }
 
-            if (other == null)
-            {
-                return false;
-            }
-            if (!(GetType() == other.GetType())) return false;
-
-            // To handle the case of comparing two new objects
-            var otherIsTransient = ReferenceEquals(other.EntityKey, null);
-            var thisIsTransient = ReferenceEquals(EntityKey, null);
-
-            if (otherIsTransient && thisIsTransient)
-            {
-                return ReferenceEquals(other, this);
-            }
-            if (otherIsTransient || thisIsTransient)
-            {
-                return false;
-            }
-
-            return other.EntityKey.Equals(EntityKey);
+        public bool Equals(T other)
+        {
+            return !ReferenceEquals(other, null) && GetType() == other.GetType() && EntityKey.Equals(other.EntityKey);
         }
 
         public override int GetHashCode()
         {
-            var thisIsTransient = Equals(EntityKey, null);
-
-            return !thisIsTransient ? EntityKey.GetHashCode() : 0;
+            return EntityKey.GetHashCode();
         }
     }
 }

@@ -17,17 +17,7 @@ namespace Atrico.Lib.DomainModel
 
         public virtual bool Equals(T other)
         {
-            if (ReferenceEquals(other, null))
-            {
-                return false;
-            }
-
-            if (GetType() != other.GetType())
-            {
-                return false;
-            }
-
-            return EqualsImpl(other);
+            return !ReferenceEquals(other, null) && GetType() == other.GetType() && EqualsImpl(other);
         }
 
         public static bool operator ==(ValueObject<T> x, ValueObject<T> y)
