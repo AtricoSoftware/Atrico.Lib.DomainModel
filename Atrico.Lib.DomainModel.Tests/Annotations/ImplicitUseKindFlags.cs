@@ -14,8 +14,8 @@ namespace Atrico.Lib.DomainModel.Tests.Annotations
         Assign = 2,
 
         /// <summary>
-        /// Indicates implicit instantiation of a type with fixed constructor signature.
-        /// That means any unused constructor parameters won't be reported as such.
+        ///     Indicates implicit instantiation of a type with fixed constructor signature.
+        ///     That means any unused constructor parameters won't be reported as such.
         /// </summary>
         InstantiatedWithFixedConstructorSignature = 4,
 

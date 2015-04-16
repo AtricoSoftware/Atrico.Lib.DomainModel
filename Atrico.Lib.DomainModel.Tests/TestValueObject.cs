@@ -2,7 +2,6 @@
 using Atrico.Lib.Assertions;
 using Atrico.Lib.Assertions.Constraints;
 using Atrico.Lib.Assertions.Elements;
-using Atrico.Lib.DomainModel.Tests.Annotations;
 using Atrico.Lib.Testing;
 using Atrico.Lib.Testing.NUnitAttributes;
 

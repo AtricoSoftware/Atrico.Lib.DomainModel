@@ -3,12 +3,13 @@ using System;
 namespace Atrico.Lib.DomainModel.Tests.Annotations
 {
     /// <summary>
-    /// Indicates that the value of the marked type (or its derivatives)
-    /// cannot be compared using '==' or '!=' operators and <c>Equals()</c>
-    /// should be used instead. However, using '==' or '!=' for comparison
-    /// with <c>null</c> is always permitted.
+    ///     Indicates that the value of the marked type (or its derivatives)
+    ///     cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+    ///     should be used instead. However, using '==' or '!=' for comparison
+    ///     with <c>null</c> is always permitted.
     /// </summary>
-    /// <example><code>
+    /// <example>
+    ///     <code>
     /// [CannotApplyEqualityOperator]
     /// class NoEquality { }
     /// class UsesNoEquality {
@@ -20,7 +21,8 @@ namespace Atrico.Lib.DomainModel.Tests.Annotations
     ///     }
     ///   }
     /// }
-    /// </code></example>
+    /// </code>
+    /// </example>
     [AttributeUsage(
         AttributeTargets.Interface | AttributeTargets.Class |
         AttributeTargets.Struct, AllowMultiple = false, Inherited = true)]

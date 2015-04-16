@@ -3,9 +3,9 @@ using System;
 namespace Atrico.Lib.DomainModel.Tests.Annotations
 {
     /// <summary>
-    /// Should be used on attributes and causes ReSharper
-    /// to not mark symbols marked with such attributes as unused
-    /// (as well as by other usage inspections)
+    ///     Should be used on attributes and causes ReSharper
+    ///     to not mark symbols marked with such attributes as unused
+    ///     (as well as by other usage inspections)
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public sealed class MeansImplicitUseAttribute : Attribute

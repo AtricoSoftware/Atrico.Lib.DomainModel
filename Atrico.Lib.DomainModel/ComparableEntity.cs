@@ -7,7 +7,7 @@ namespace Atrico.Lib.DomainModel
         where TKey : ComparableValueObject<TKey>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected ComparableEntity(TKey entityKey)
             : base(entityKey)
@@ -32,18 +32,20 @@ namespace Atrico.Lib.DomainModel
         {
             return x.CompareTo(y) < 0;
         }
+
         public static bool operator >(ComparableEntity<T, TKey> x, ComparableEntity<T, TKey> y)
         {
             return x.CompareTo(y) > 0;
         }
+
         public static bool operator <=(ComparableEntity<T, TKey> x, ComparableEntity<T, TKey> y)
         {
             return x.CompareTo(y) <= 0;
         }
+
         public static bool operator >=(ComparableEntity<T, TKey> x, ComparableEntity<T, TKey> y)
         {
             return x.CompareTo(y) >= 0;
         }
-
     }
 }

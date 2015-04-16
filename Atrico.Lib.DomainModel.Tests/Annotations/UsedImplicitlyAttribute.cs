@@ -3,9 +3,9 @@ using System;
 namespace Atrico.Lib.DomainModel.Tests.Annotations
 {
     /// <summary>
-    /// Indicates that the marked symbol is used implicitly
-    /// (e.g. via reflection, in external library), so this symbol
-    /// will not be marked as unused (as well as by other usage inspections)
+    ///     Indicates that the marked symbol is used implicitly
+    ///     (e.g. via reflection, in external library), so this symbol
+    ///     will not be marked as unused (as well as by other usage inspections)
     /// </summary>
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
     public sealed class UsedImplicitlyAttribute : Attribute

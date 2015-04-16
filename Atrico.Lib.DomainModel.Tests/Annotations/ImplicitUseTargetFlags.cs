@@ -3,9 +3,9 @@ using System;
 namespace Atrico.Lib.DomainModel.Tests.Annotations
 {
     /// <summary>
-    /// Specify what is considered used implicitly
-    /// when marked with <see cref="MeansImplicitUseAttribute"/>
-    /// or <see cref="UsedImplicitlyAttribute"/>
+    ///     Specify what is considered used implicitly
+    ///     when marked with <see cref="MeansImplicitUseAttribute" />
+    ///     or <see cref="UsedImplicitlyAttribute" />
     /// </summary>
     [Flags]
     public enum ImplicitUseTargetFlags

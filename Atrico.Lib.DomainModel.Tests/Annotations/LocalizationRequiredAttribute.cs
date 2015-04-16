@@ -3,14 +3,16 @@ using System;
 namespace Atrico.Lib.DomainModel.Tests.Annotations
 {
     /// <summary>
-    /// Indicates that marked element should be localized or not
+    ///     Indicates that marked element should be localized or not
     /// </summary>
-    /// <example><code>
+    /// <example>
+    ///     <code>
     /// [LocalizationRequiredAttribute(true)]
     /// public class Foo {
     ///   private string str = "my string"; // Warning: Localizable string
     /// }
-    /// </code></example>
+    /// </code>
+    /// </example>
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
     public sealed class LocalizationRequiredAttribute : Attribute
     {

@@ -24,14 +24,17 @@ namespace Atrico.Lib.DomainModel
         {
             return x.CompareTo(y) < 0;
         }
+
         public static bool operator >(ComparableValueObject<T> x, ComparableValueObject<T> y)
         {
             return x.CompareTo(y) > 0;
         }
+
         public static bool operator <=(ComparableValueObject<T> x, ComparableValueObject<T> y)
         {
             return x.CompareTo(y) <= 0;
         }
+
         public static bool operator >=(ComparableValueObject<T> x, ComparableValueObject<T> y)
         {
             return x.CompareTo(y) >= 0;
