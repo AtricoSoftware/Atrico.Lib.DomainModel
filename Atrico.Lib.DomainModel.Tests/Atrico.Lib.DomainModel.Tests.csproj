@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Annotations\Annotations.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />
+    <Compile Include="TestComparableValueObject.cs" />
     <Compile Include="TestValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

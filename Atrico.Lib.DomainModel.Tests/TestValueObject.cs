@@ -7,8 +7,8 @@ using Atrico.Lib.Testing.NUnitAttributes;
 
 namespace Atrico.Lib.DomainModel.Tests
 {
-	[TestFixture]
-	public class ValueObjectTests : TestFixtureBase
+    [TestFixture]
+	public class TestValueObject : TestFixtureBase
 	{
 		private class Address : ValueObject<Address>
 		{
