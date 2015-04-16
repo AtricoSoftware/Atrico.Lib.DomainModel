@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel.Tests", "Atrico.Lib.DomainModel.Tests\Atrico.Lib.DomainModel.Tests.csproj", "{FDD10FF0-2D97-4CA0-BF7F-58483D701534}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atrico.Lib.DomainModel.Profiling", "Atrico.Lib.DomainModel.Profiling\Atrico.Lib.DomainModel.Profiling.csproj", "{F1964995-2EB3-4141-B581-FC03E25DB055}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FDD10FF0-2D97-4CA0-BF7F-58483D701534}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDD10FF0-2D97-4CA0-BF7F-58483D701534}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDD10FF0-2D97-4CA0-BF7F-58483D701534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1964995-2EB3-4141-B581-FC03E25DB055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1964995-2EB3-4141-B581-FC03E25DB055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1964995-2EB3-4141-B581-FC03E25DB055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1964995-2EB3-4141-B581-FC03E25DB055}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
