@@ -16,7 +16,7 @@ namespace Atrico.Lib.DomainModel.Profiling
             var floats = new List<float>();
             var strings = new List<string>();
 
-            for (var i = 0; i < 10; ++i)
+            for (var i = 0; i < 200; ++i)
             {
                 ints.Add(i);
                 floats.Add(i);
@@ -39,6 +39,19 @@ namespace Atrico.Lib.DomainModel.Profiling
         {
             // Create objects
             _objects = (from i in _ints from f in _floats from s in _strings select new TestValueObject(i, f, s)).ToArray();
+        }
+
+        public void Compare()
+        {
+            TestValueObject prev = null;
+            foreach (var obj in _objects)
+            {
+                if (prev != null)
+                {
+                    var equ = prev.Equals(obj);
+                }
+                prev = obj;
+            }
         }
     }
 }
