@@ -2,6 +2,7 @@
 
 namespace Atrico.Lib.DomainModel.Profiling
 {
+   // TODO - Test comment for checkin test
     internal class Program
     {
         private static void Main(string[] args)
