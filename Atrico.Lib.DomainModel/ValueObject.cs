@@ -5,6 +5,7 @@ namespace Atrico.Lib.DomainModel
     public abstract class ValueObject<T> : IEquatable<T>
         where T : ValueObject<T>
     {
+        
         public override bool Equals(object obj)
         {
             return Equals(obj as T);
