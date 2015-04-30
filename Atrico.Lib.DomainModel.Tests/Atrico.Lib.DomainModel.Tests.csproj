@@ -34,9 +34,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atrico.Lib.Assertions, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Atrico.Lib.Assertions, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Atrico.Lib.Assertions.3.2.0.0\lib\net452\Atrico.Lib.Assertions.dll</HintPath>
+      <HintPath>..\packages\Atrico.Lib.Assertions.3.2.1.0\lib\net452\Atrico.Lib.Assertions.dll</HintPath>
     </Reference>
     <Reference Include="Atrico.Lib.Common, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
