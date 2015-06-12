@@ -91,7 +91,7 @@
     <Compile Include="Annotations\RazorSectionAttribute.cs" />
     <Compile Include="Annotations\StringFormatMethodAttribute.cs" />
     <Compile Include="Annotations\UsedImplicitlyAttribute.cs" />
-    <Compile Include="Helpers.cs" />
+    <Compile Include="DomainModelTestFixtureBase.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />
     <Compile Include="TestComparableEntity.cs" />
     <Compile Include="TestComparableValueObject.cs" />

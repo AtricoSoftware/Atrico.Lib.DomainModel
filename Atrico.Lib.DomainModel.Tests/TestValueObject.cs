@@ -8,7 +8,7 @@ using Atrico.Lib.Testing.NUnitAttributes;
 namespace Atrico.Lib.DomainModel.Tests
 {
     [TestFixture]
-    public class TestValueObject : TestFixtureBase
+    public class TestValueObject : DomainModelTestFixtureBase
     {
         private const int _pivot = 10;
 
@@ -18,8 +18,8 @@ namespace Atrico.Lib.DomainModel.Tests
         public void TestEquals([Values(1, 10, 100)] int val)
         {
             // Arrange
-            var obj1 = new Helpers.TestValueObject(_pivot);
-            var obj2 = new Helpers.TestValueObject(val);
+            var obj1 = new TestValueObject(_pivot);
+            var obj2 = new TestValueObject(val);
             var expected = _pivot.Equals(val);
             Debug.WriteLine("{0} equals {1} = {2}", _pivot, val, expected);
 
@@ -34,8 +34,8 @@ namespace Atrico.Lib.DomainModel.Tests
         public void TestOperatorEquals([Values(1, 10, 100)] int val)
         {
             // Arrange
-            var obj1 = new Helpers.TestValueObject(_pivot);
-            var obj2 = new Helpers.TestValueObject(val);
+            var obj1 = new TestValueObject(_pivot);
+            var obj2 = new TestValueObject(val);
             var expected = _pivot == val;
             Debug.WriteLine("{0} == {1} = {2}", _pivot, val, expected);
 
@@ -50,8 +50,8 @@ namespace Atrico.Lib.DomainModel.Tests
         public void TestOperatorNotEquals([Values(1, 10, 100)] int val)
         {
             // Arrange
-            var obj1 = new Helpers.TestValueObject(_pivot);
-            var obj2 = new Helpers.TestValueObject(val);
+            var obj1 = new TestValueObject(_pivot);
+            var obj2 = new TestValueObject(val);
             var expected = _pivot != val;
             Debug.WriteLine("{0} != {1} = {2}", _pivot, val, expected);
 
@@ -71,7 +71,7 @@ namespace Atrico.Lib.DomainModel.Tests
         {
             // Arrange
             var val = RandomValues.Integer();
-            var obj1 = new Helpers.TestValueObject(val);
+            var obj1 = new TestValueObject(val);
             const bool expected = false; // Null never equals
             Debug.WriteLine("{0} equals NULL = {1}", val, expected);
 
@@ -87,7 +87,7 @@ namespace Atrico.Lib.DomainModel.Tests
         {
             // Arrange
             var val = RandomValues.Integer();
-            var obj1 = new Helpers.TestValueObject(val);
+            var obj1 = new TestValueObject(val);
             const bool expected = false; // Null never equals
             Debug.WriteLine("{0} == NULL = {1}", val, expected);
 
@@ -103,7 +103,7 @@ namespace Atrico.Lib.DomainModel.Tests
         {
             // Arrange
             var val = RandomValues.Integer();
-            var obj1 = new Helpers.TestValueObject(val);
+            var obj1 = new TestValueObject(val);
             const bool expected = true; // Null never equals
             Debug.WriteLine("{0} != NULL = {1}", val, expected);
 
@@ -122,8 +122,8 @@ namespace Atrico.Lib.DomainModel.Tests
         public void TestEqualsWithOtherType([Values(1, 10, 100)] int val)
         {
             // Arrange
-            var obj1 = new Helpers.TestValueObject(_pivot);
-            var obj2 = new Helpers.TestValueObjectDerived(val);
+            var obj1 = new TestValueObject(_pivot);
+            var obj2 = new TestValueObjectDerived(val);
             const bool expected = false; // Different type never equals
             Debug.WriteLine("{0} equals {1} = {2}", obj1, obj2, expected);
 
@@ -138,8 +138,8 @@ namespace Atrico.Lib.DomainModel.Tests
         public void TestOperatorEqualsWithOtherType([Values(1, 10, 100)] int val)
         {
             // Arrange
-            var obj1 = new Helpers.TestValueObject(_pivot);
-            var obj2 = new Helpers.TestValueObjectDerived(val);
+            var obj1 = new TestValueObject(_pivot);
+            var obj2 = new TestValueObjectDerived(val);
             const bool expected = false; // Different type never equals
             Debug.WriteLine("{0} == {1} = {2}", obj1, obj2, expected);
 
@@ -154,8 +154,8 @@ namespace Atrico.Lib.DomainModel.Tests
         public void TestOperatorNotEqualsWithOtherType([Values(1, 10, 100)] int val)
         {
             // Arrange
-            var obj1 = new Helpers.TestValueObject(_pivot);
-            var obj2 = new Helpers.TestValueObjectDerived(val);
+            var obj1 = new TestValueObject(_pivot);
+            var obj2 = new TestValueObjectDerived(val);
             const bool expected = true; // Different type never equals
             Debug.WriteLine("{0} != {1} = {2}", obj1, obj2, expected);
 
