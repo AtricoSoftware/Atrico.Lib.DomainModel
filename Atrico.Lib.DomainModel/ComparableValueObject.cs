@@ -2,7 +2,7 @@
 
 namespace Atrico.Lib.DomainModel
 {
-    public abstract class ComparableValueObject<T> : ValueObject<T>, IComparable, IComparable<T> where T : ValueObject<T>
+    public abstract class ComparableValueObject<T> : ValueObject<T>, IComparable, IComparable<T> where T : ComparableValueObject<T>
     {
         public int CompareTo(object obj)
         {

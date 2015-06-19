@@ -1,26 +1,10 @@
-﻿using System;
+﻿using Atrico.Lib.Common;
 
 namespace Atrico.Lib.DomainModel
 {
-    public abstract class ValueObject<T> : IEquatable<T>
+    public abstract class ValueObject<T> : EquatableObject<T>
         where T : ValueObject<T>
     {
-        
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as T);
-        }
-
-        public override int GetHashCode()
-        {
-            return GetHashCodeImpl();
-        }
-
-        public virtual bool Equals(T other)
-        {
-            return !ReferenceEquals(other, null) && GetType() == other.GetType() && EqualsImpl(other);
-        }
-
         public static bool operator ==(ValueObject<T> x, ValueObject<T> y)
         {
             return ReferenceEquals(x, null) ? ReferenceEquals(y, null) : x.Equals(y);
@@ -30,8 +14,5 @@ namespace Atrico.Lib.DomainModel
         {
             return !(x == y);
         }
-
-        protected abstract int GetHashCodeImpl();
-        protected abstract bool EqualsImpl(T other);
     }
 }

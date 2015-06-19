@@ -14,6 +14,12 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <releaseNotes>
+      2.1.2.0
+      Update common lib
+      2.1.1.0
+      Removed in incorrect reference to itself
+      2.1.0.0
+      referenced common lib for equatable object
       2.0.0.0
       Tests optimized
       ValueObject optimized for performance

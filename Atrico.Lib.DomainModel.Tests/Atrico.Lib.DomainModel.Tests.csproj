@@ -34,16 +34,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atrico.Lib.Assertions, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Assertions.3.2.2.0\lib\net452\Atrico.Lib.Assertions.dll</HintPath>
+    <Reference Include="Atrico.Lib.Assertions, Version=3.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atrico.Lib.Assertions.3.2.3.0\lib\net452\Atrico.Lib.Assertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Atrico.Lib.Common, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Common.1.7.0.0\lib\net452\Atrico.Lib.Common.dll</HintPath>
+    <Reference Include="Atrico.Lib.Common, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atrico.Lib.Common.1.9.1.0\lib\net452\Atrico.Lib.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Atrico.Lib.Testing, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Testing.1.3.2.0\lib\net452\Atrico.Lib.Testing.dll</HintPath>
+    <Reference Include="Atrico.Lib.DomainModel, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atrico.Lib.DomainModel.2.0.0.0\lib\net452\Atrico.Lib.DomainModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Atrico.Lib.Testing, Version=1.3.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atrico.Lib.Testing.1.3.8.0\lib\net452\Atrico.Lib.Testing.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -53,6 +57,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Atrico.Lib.DomainModel\Properties\AssemblyVersion.cs">
+      <Link>Properties\AssemblyVersion.cs</Link>
+    </Compile>
     <Compile Include="Annotations\CanBeNullAttribute.cs" />
     <Compile Include="Annotations\AspMvcActionAttribute.cs" />
     <Compile Include="Annotations\AspMvcActionSelectorAttribute.cs" />
@@ -100,14 +107,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atrico.Lib.DomainModel\Atrico.Lib.DomainModel.csproj">
-      <Project>{5d118a7a-c9db-4d87-8315-71d7f0353b39}</Project>
-      <Name>Atrico.Lib.DomainModel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

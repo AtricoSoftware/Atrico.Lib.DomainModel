@@ -34,6 +34,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Atrico.Lib.Common, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atrico.Lib.Common.1.9.1.0\lib\net452\Atrico.Lib.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -41,6 +45,7 @@
     <Compile Include="ComparableEntity.cs" />
     <Compile Include="ComparableValueObject.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Properties\AssemblyVersion.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />
     <Compile Include="ValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,6 +53,9 @@
   <ItemGroup>
     <None Include="Atrico.Lib.DomainModel.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
