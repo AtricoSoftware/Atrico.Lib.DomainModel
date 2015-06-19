@@ -37,10 +37,6 @@
       <HintPath>..\packages\Atrico.Lib.Common.1.9.1.0\lib\net452\Atrico.Lib.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Atrico.Lib.DomainModel, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.DomainModel.2.0.0.0\lib\net452\Atrico.Lib.DomainModel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="_TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atrico.Lib.DomainModel\Atrico.Lib.DomainModel.csproj">
+      <Project>{5d118a7a-c9db-4d87-8315-71d7f0353b39}</Project>
+      <Name>Atrico.Lib.DomainModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
