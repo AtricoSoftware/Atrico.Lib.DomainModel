@@ -1,3 +1,0 @@
-﻿TODO
-~~~~
-Simplify repeat (repeat of repeat)

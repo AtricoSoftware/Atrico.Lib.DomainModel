@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Atrico.Lib.DomainModel.Tests</RootNamespace>
     <AssemblyName>Atrico.Lib.DomainModel.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,20 +34,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atrico.Lib.Assertions, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Assertions.3.2.4.0\lib\net452\Atrico.Lib.Assertions.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Atrico.Lib.Common, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Common.1.9.1.0\lib\net452\Atrico.Lib.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Atrico.Lib.Testing, Version=1.3.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atrico.Lib.Testing.1.3.9.0\lib\net452\Atrico.Lib.Testing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -107,9 +96,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_TODO.txt" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\Atrico.Lib.Assertions\Atrico.Lib.Assertions\Atrico.Lib.Assertions.csproj">
+      <Project>{84481d71-f7f0-4c10-87ec-b5717c2860de}</Project>
+      <Name>Atrico.Lib.Assertions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atrico.Lib.Common\Atrico.Lib.Common\Atrico.Lib.Common.csproj">
+      <Project>{983a29ac-8a3b-4d78-81d7-bcaf9b520877}</Project>
+      <Name>Atrico.Lib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atrico.Lib.Testing\Atrico.Lib.Testing\Atrico.Lib.Testing.csproj">
+      <Project>{ef628ff6-5ee4-4043-82fe-8caf3ab36787}</Project>
+      <Name>Atrico.Lib.Testing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Atrico.Lib.DomainModel\Atrico.Lib.DomainModel.csproj">
       <Project>{5d118a7a-c9db-4d87-8315-71d7f0353b39}</Project>
       <Name>Atrico.Lib.DomainModel</Name>
