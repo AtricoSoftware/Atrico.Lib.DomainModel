@@ -37,8 +37,9 @@
     </releaseNotes>
   </metadata>
   <files>
-    <file src="bin\Release\$id$.*" target="lib\net45" />
-    <file src="..\*.40\bin\Release\$id$.*" target="lib\net40" />
+    <file src="bin\net45\$id$.*" target="lib\net45" />
+    <file src="bin\net451\$id$.*" target="lib\net451" />
+    <file src="bin\net452\$id$.*" target="lib\net452" />
     <file src="..\..\License.txt" target="docs" />
   </files>
 </package>
