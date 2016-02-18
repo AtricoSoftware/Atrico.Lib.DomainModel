@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Atrico Software")]
-[assembly: AssemblyCopyright("Copyright © Atrico Software 2014")]
+[assembly: AssemblyCopyright("Copyright © Atrico Software 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en-UK")]
