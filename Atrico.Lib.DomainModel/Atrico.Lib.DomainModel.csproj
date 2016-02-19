@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Atrico.Lib.DomainModel.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Atrico.Lib.Common\Atrico.Lib.Common\Atrico.Lib.Common.csproj">
